@@ -1,4 +1,4 @@
-from database import test_database
+from database import init_database, test_database
 
 
 def main():
@@ -8,9 +8,15 @@ def main():
 
     try:
         if test_database():
-            print("PostgreSQL: OK")
+            print("PostgreSQL connection: OK")
+
+            init_database()
+
+            print("Database initialization: OK")
+            print("All tables are ready.")
+
         else:
-            print("PostgreSQL: FAILED")
+            print("PostgreSQL connection: FAILED")
 
     except Exception as error:
         print(f"Database error: {error}")
